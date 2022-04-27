@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true }))
+
 app.set('view engine', 'pug')
 
 var users = [
@@ -26,7 +29,7 @@ app.get('/users', function(req, res) {
 })
 
 app.get('/users/create', function(req, res) {
-    res.render('users/create', {})
+    res.render('users/create')
 })
 
 app.get('/users/search', function(req, res) {
@@ -40,7 +43,8 @@ app.get('/users/search', function(req, res) {
 })
 
 app.post('/users/create', function(req, res) {
-    console.log(req.body)
+    users.push(req.body);
+    res.redirect('/users')
 });
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
