@@ -25,6 +25,10 @@ app.get('/users', function(req, res) {
     })
 })
 
+app.get('/users/create', function(req, res) {
+    res.render('users/create', {})
+})
+
 app.get('/users/search', function(req, res) {
     var q = req.query.q;
     var matched = users.filter(function(user) {
@@ -34,6 +38,10 @@ app.get('/users/search', function(req, res) {
         users: matched
     })
 })
+
+app.post('/users/create', function(req, res) {
+    console.log(req.body)
+});
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
