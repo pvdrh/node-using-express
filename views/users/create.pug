@@ -1,7 +1,16 @@
 extends ../layouts/general
 block content
     h1 Create User
+
+    if errors
+        each error in errors 
+            .alert.alert=danger= error
     form(action="/users/store", method="POST")
-        label Name
-        input(type="text", name="name")
-        button Create
+        .form-group
+            label(for="name") Name
+            input#name(type="text", name="name", value=values ? values.name : '')
+        br
+        .form-group
+            label(for="phone") Phone
+            input#phone(type="text", name="phone", value=values ? values.phone : '')
+        button.btn.btn-primary Create
