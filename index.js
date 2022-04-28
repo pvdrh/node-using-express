@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const userRoutes = require('./routes/user.routes')
 
+app.use(express.static('public'))
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 
