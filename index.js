@@ -4,6 +4,7 @@ const port = 3000
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
 var cookieParser = require('cookie-parser')
+const authMiddleware = require('./middlewares/auth.middleware')
 app.use(cookieParser())
 
 app.use(express.static('public'))
@@ -18,7 +19,7 @@ app.get('/', function(req, res) {
     })
 })
 
-app.use('/users', userRoutes)
+app.use('/users', authMiddleware.requireAuth, userRoutes)
 app.use('/auth', authRoutes)
 
 
