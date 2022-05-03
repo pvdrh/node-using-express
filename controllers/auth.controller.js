@@ -1,5 +1,6 @@
 const db = require('../db')
 const shortid = require('shortid')
+const md5 = require('md5')
 
 module.exports.login = function(req, res) {
     res.render('auth/login')
@@ -7,7 +8,7 @@ module.exports.login = function(req, res) {
 
 module.exports.postLogin = function(req, res) {
     let email = req.body.email
-    let password = req.body.password
+    let password = md5(req.body.password)
     let user = db.get('users').find({ email: email }).value()
 
     if (!user) {
@@ -30,6 +31,6 @@ module.exports.postLogin = function(req, res) {
         return
     }
 
-    res.cookie('userId', user.id)
-    res.redirect('/users')
+    res.cookie('userId', user.id);
+    res.redirect('/users');
 }
