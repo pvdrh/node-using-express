@@ -2,64 +2,19 @@
   "users": [
     {
       "name": "Vũ Thị Uyên",
-      "id": "B3rle3KeU"
+      "id": "B3rle3KeU",
+      "email": "uyenvt@gmail.com"
     },
     {
       "name": "Nguyễn Ngọc Phong",
-      "id": "alCU1d6ZR"
-    },
-    {
-      "name": "Nhân viên 1",
-      "id": "tAS-1w9Xj"
-    },
-    {
-      "name": "Nhân viên 2",
-      "id": "gGUtosZcU"
-    },
-    {
-      "name": "Nhân viên mới",
-      "id": "5ecTkD4ks"
+      "id": "alCU1d6ZR",
+      "email": "phongnn@gmail.com",
+      "password": "123456"
     },
     {
       "name": "Vu Nam Hung",
-      "id": "b5spnSt6l"
-    },
-    {
-      "name": "abc",
-      "id": "RPqNFcBaE"
-    },
-    {
-      "name": "qqqq",
-      "id": "Yn1Yc0MXG"
-    },
-    {
-      "name": "dddd",
-      "id": "GpHPKYR-J"
-    },
-    {
-      "name": "vbvb",
-      "phone": "vbvbvb",
-      "id": "xL744IMNq"
-    },
-    {
-      "name": "123123",
-      "phone": "123123",
-      "id": "0rrnNylzJ"
-    },
-    {
-      "name": "132312",
-      "phone": "ggfgf",
-      "id": "DyIcOLoI3"
-    },
-    {
-      "name": "",
-      "phone": "",
-      "id": "XuI9r59bI"
-    },
-    {
-      "name": "duy",
-      "phone": "3333",
-      "id": "eNA9dFESi"
+      "id": "b5spnSt6l",
+      "email": "hungvn@gmail.com"
     }
   ]
 }

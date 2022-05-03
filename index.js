@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const userRoutes = require('./routes/user.routes')
+const authRoutes = require('./routes/auth.routes')
 var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
@@ -18,6 +19,8 @@ app.get('/', function(req, res) {
 })
 
 app.use('/users', userRoutes)
+app.use('/auth', authRoutes)
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

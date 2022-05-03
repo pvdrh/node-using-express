@@ -2,14 +2,10 @@ const express = require('express')
 const shortid = require('shortid')
 const router = express.Router()
 const controller = require('../controllers/user.controller')
+const authMiddleware = require('../middlewares/auth.middleware')
 const validate = require('../validate/user.validate')
 
-router.get('/', controller.index)
-
-router.get('/cookie', function(req, res) {
-    res.cookie('user-id', 12345)
-    res.send('Hello')
-})
+router.get('/', authMiddleware.requireAuth, controller.index)
 
 router.get('/create', controller.create)
 
