@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const userRoutes = require('./routes/user.routes')
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 app.use(express.static('public'))
 app.use(express.json()) // for parsing application/json
