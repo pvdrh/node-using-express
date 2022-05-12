@@ -6,9 +6,9 @@ const authRoutes = require('./routes/auth.routes')
 var cookieParser = require('cookie-parser')
 const authMiddleware = require('./middlewares/auth.middleware')
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('abccc123123'))
 
 app.set('view engine', 'pug')
@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
     })
 })
 
-app.use('/users', authMiddleware.requireAuth, userRoutes)
+app.use('/users', authMiddleware.requireAuth, userRoutes);
 app.use('/auth', authRoutes)
 
 
