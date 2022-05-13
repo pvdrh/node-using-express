@@ -7,10 +7,28 @@ module.exports.index = function (req, res) {
   const perPage = 5;
   const start = (page - 1) * perPage;
   const end = page * perPage;
+  let size = db.get('users').size().value();
+  size = Math.ceil(size / start);
+  let prevPage = 0;
+  let nextPage = 0;
+  if (page - 1 === 0) {
+    prevPage = 1;
+  } else {
+    prevPage = page - 1;
+  }
+  if (nextPage + 1 === size) {
+    nextPage = page;
+  } else {
+    nextPage = page + 1;
+  }
+
   // const drop = (page - 1) * perPage;
   res.render('users/index', {
     users: db.get('users')
       .value().slice(start, end),
+    prevPage: prevPage,
+    nextPage: nextPage,
+    page: page,
     // users: db.get('users')
     //   .drop(drop).take(perPage).value(),
   });

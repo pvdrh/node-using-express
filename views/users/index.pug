@@ -17,3 +17,9 @@ block content
                           td= user.phone
                           td
                               a(href="/users/" + user.id) View
+        nav(aria-label='...')
+            ul.pagination
+                li.page-item.disabled
+                a.page-link(href='/users/?page=' + prevPage) Previous
+                li.page-item
+                a.page-link(href='/users/?page=' + nextPage) Next
