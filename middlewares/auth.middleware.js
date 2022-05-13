@@ -1,5 +1,6 @@
 const db = require('../db');
 
+// eslint-disable-next-line func-names
 module.exports.requireAuth = function (req, res, next) {
   if (!req.signedCookies.userId) {
     res.redirect('/auth/login');
