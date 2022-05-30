@@ -26,9 +26,9 @@ module.exports.index = function (req, res) {
   res.render('users/index', {
     users: db.get('users')
       .value().slice(start, end),
-    prevPage: prevPage,
-    nextPage: nextPage,
-    page: page,
+    prevPage,
+    nextPage,
+    page,
     // users: db.get('users')
     //   .drop(drop).take(perPage).value(),
   });
@@ -36,7 +36,7 @@ module.exports.index = function (req, res) {
 
 // eslint-disable-next-line func-names
 module.exports.search = function (req, res) {
-  const q = req.query.q;
+  const { q } = req.query;
   const matched = db.get('users')
     .value()
     .filter((user) => user.name.toLowerCase()
@@ -49,6 +49,7 @@ module.exports.search = function (req, res) {
 // eslint-disable-next-line func-names
 module.exports.store = function (req, res) {
   req.body.id = shortid.generate();
+  req.body.avatar = req.file.path.slice(7, req.file.path.length).replace('\\', '/');
   db.get('users')
     .push(req.body)
     .write();
