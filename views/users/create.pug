@@ -6,6 +6,7 @@ block content
       each error in errors
           .alert.alert=danger = error
     form(action="/users/store", method="POST", enctype="multipart/form-data")
+        input(type="hidden", name="_csrf", value=csrfToken)
         .form-group
             label(for="name") Name
             input#name.from.control(type="text", name="name", , style="margin-left: 10px", value=values ? values.name : '')

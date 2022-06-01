@@ -69,5 +69,7 @@ module.exports.detail = function (req, res) {
 
 // eslint-disable-next-line func-names
 module.exports.create = function (req, res) {
-  res.render('users/create');
+  res.render('users/create', {
+    csrfToken: res.csrfToken,
+  });
 };
