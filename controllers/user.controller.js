@@ -3,11 +3,10 @@ const db = require('../db');
 const User = require('../models/user.model');
 
 // eslint-disable-next-line func-names
-module.exports.index = function (req, res) {
-  User.find().then((users) => {
-    res.render('users/index', {
-      users,
-    });
+module.exports.index = async function (req, res) {
+  const users = await User.find();
+  res.render('users/index', {
+    users,
   });
   // const page = parseInt(req.query.page, 10) || 1;
   // const perPage = 5;
