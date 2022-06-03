@@ -4,6 +4,12 @@ require('dotenv').config();
 const app = express();
 const port = 3000;
 const csurf = require('csurf');
+const mongoose = require('mongoose');
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(process.env.MONGO_URL);
+}
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');

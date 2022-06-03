@@ -1,37 +1,43 @@
 const shortid = require('shortid');
 const db = require('../db');
+const User = require('../models/user.model');
 
 // eslint-disable-next-line func-names
 module.exports.index = function (req, res) {
-  const page = parseInt(req.query.page, 10) || 1;
-  const perPage = 5;
-  const start = (page - 1) * perPage;
-  const end = page * perPage;
-  let size = db.get('users').size().value();
-  size = Math.ceil(size / start);
-  let prevPage = 0;
-  let nextPage = 0;
-  if (page - 1 === 0) {
-    prevPage = 1;
-  } else {
-    prevPage = page - 1;
-  }
-  if (nextPage + 1 === size) {
-    nextPage = page;
-  } else {
-    nextPage = page + 1;
-  }
-
-  // const drop = (page - 1) * perPage;
-  res.render('users/index', {
-    users: db.get('users')
-      .value().slice(start, end),
-    prevPage,
-    nextPage,
-    page,
-    // users: db.get('users')
-    //   .drop(drop).take(perPage).value(),
+  User.find().then((users) => {
+    res.render('users/index', {
+      users,
+    });
   });
+  // const page = parseInt(req.query.page, 10) || 1;
+  // const perPage = 5;
+  // const start = (page - 1) * perPage;
+  // const end = page * perPage;
+  // let size = db.get('users').size().value();
+  // size = Math.ceil(size / start);
+  // let prevPage = 0;
+  // let nextPage = 0;
+  // if (page - 1 === 0) {
+  //   prevPage = 1;
+  // } else {
+  //   prevPage = page - 1;
+  // }
+  // if (nextPage + 1 === size) {
+  //   nextPage = page;
+  // } else {
+  //   nextPage = page + 1;
+  // }
+
+  // // const drop = (page - 1) * perPage;
+  // res.render('users/index', {
+  //   users: db.get('users')
+  //     .value().slice(start, end),
+  //   prevPage,
+  //   nextPage,
+  //   page,
+  //   // users: db.get('users')
+  //   //   .drop(drop).take(perPage).value(),
+  // });
 };
 
 // eslint-disable-next-line func-names
